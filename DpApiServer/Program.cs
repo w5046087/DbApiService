@@ -1,6 +1,6 @@
 //using NLog;
 //using NLog.Web;
-
+//dage nihao ,wo jiushi tijiao yixaizi 
 //var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
 using DpApiServer.Core.Account;
