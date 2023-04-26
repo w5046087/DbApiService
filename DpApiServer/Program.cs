@@ -1,8 +1,8 @@
 //using NLog;
 //using NLog.Web;
 
-//var logger = NLo1g.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-//welcome back1111
+//var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+
 using DpApiServer.Core.Account;
 using DpApiServer.DbHelper;
 using DpApiServer.HttpLib;
