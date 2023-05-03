@@ -1,13 +1,6 @@
-//using NLog;
-//using NLog.Web;
 
-//var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-
-using DpApiServer.Core.Account;
-using DpApiServer.DbHelper;
-using DpApiServer.HttpLib;
+using DeeplHelperDb;
 using DpApiServer.JwtLib;
-using DpApiServer.WeiXinLib;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -30,12 +23,12 @@ builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
-    options.SaveToken = true;
-    //options.Events.OnAuthenticationFailed = async (s) =>
-    //{
-    //   s.Response.HttpContext.
+    //options.SaveToken = true;
+    ////options.Events.OnAuthenticationFailed = async (s) =>
+    ////{
+    ////   s.Response.HttpContext.
 
-    //};
+    ////};
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateLifetime = true,
@@ -49,30 +42,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
-    // 忽略循环引用
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-    // 为空忽略
     options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
 });
-// Add services to the container.
 
 builder.Services.AddSingleton(jwtTokenConfig);
 
 //这里时间问题数据库全部固定,没有时间去搞什么三层架构
 builder.Services.AddSingleton<DbContext>(new DbContext(builder.Configuration.GetConnectionString("SqlConnection")));
 
+builder.Services.AddSingleton<JwtAuthManager>();
 
 
-
-
-
-
-builder.Services.AddSingleton<JwtAuthManager>();//这个jwt无非就一个token以及一个refreshToken 每隔3分钟向服务器请求一次刷新即可.就做完了
-
-
-
-
-//builder.Services.AddScoped<DeeplHelperDb.Service.AccountService>();
+builder.Services.AddScoped<DeeplHelperDb.Service.A_AccountService>();
 //builder.Services.AddScoped<DeeplHelperDb.Service.A_MessageService>();
 
 //builder.Services.AddScoped<AccountBusiness>();

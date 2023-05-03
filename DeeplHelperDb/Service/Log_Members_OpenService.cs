@@ -2,82 +2,82 @@ using Dapper;
 using DeeplHelperDb.Model;
 namespace DeeplHelperDb.Service {
 
-    public class A_MessageService
+    public class Log_Members_OpenService
     {
 
 
         private readonly DbContext dbContext;
 
 
-        public A_MessageService(DbContext _dbContext) {
+        public Log_Members_OpenService(DbContext _dbContext) {
 
             this.dbContext = _dbContext;
         }
 
 
-        public A_MessageModel GetByPK(string id)
+        public Log_Members_OpenModel GetByPK(string id)
         {
             //这里可以是ID,还可以是在模型上指定为Key [key]
             using (var conn = dbContext.GetConnection()) {
-                return conn.Get<A_MessageModel>(id);
+                return conn.Get<Log_Members_OpenModel>(id);
             }
 
         }
 
-        public List<A_MessageModel> GetAll()
+        public List<Log_Members_OpenModel> GetAll()
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>().ToList();
+                return conn.GetList<Log_Members_OpenModel>().ToList();
             }
         }
-        public List<A_MessageModel> GetAll(object[] _objList)
+        public List<Log_Members_OpenModel> GetAll(object[] _objList)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_objList).ToList();
+                return conn.GetList<Log_Members_OpenModel>(_objList).ToList();
             }
         }
         //"where age = 10 or Name like '%Smith%'"
-        public List<A_MessageModel> GetAll(string _whereQuery)
+        public List<Log_Members_OpenModel> GetAll(string _whereQuery)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_whereQuery).ToList();
+                return conn.GetList<Log_Members_OpenModel>(_whereQuery).ToList();
             }
         }
         //GetListPaged<User>(1,10,"where age = 10 or Name like '%Smith%'","Name desc");
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
+        public List<Log_Members_OpenModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
+                return conn.GetListPaged<Log_Members_OpenModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
             }
         }
         //connection.GetListPaged<User>(1,10,"where age = @Age","Name desc", new {Age = 10});  
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
+        public List<Log_Members_OpenModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
+                return conn.GetListPaged<Log_Members_OpenModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
             }
         }
 
-        public int? Insert(A_MessageModel model01) {
+        public int? Insert(Log_Members_OpenModel model01) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<A_MessageModel>(model01);
+                return conn.Insert<Log_Members_OpenModel>(model01);
             }
         }
 
-        public Guid Insert(A_MessageModel model,Guid guid)
+        public Guid Insert(Log_Members_OpenModel model,Guid guid)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<Guid,A_MessageModel>(model);
+                return conn.Insert<Guid,Log_Members_OpenModel>(model);
             }
         }
 
-        public int Update(A_MessageModel model)
+        public int Update(Log_Members_OpenModel model)
         {
 
             using (var conn = dbContext.GetConnection())
@@ -90,7 +90,7 @@ namespace DeeplHelperDb.Service {
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Delete<A_MessageModel>(id);
+                return conn.Delete<Log_Members_OpenModel>(id);
             }
 
         }
@@ -101,7 +101,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(objects);
+                return conn.DeleteList<Log_Members_OpenModel>(objects);
             }
 
         }
@@ -111,7 +111,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query);
+                return conn.DeleteList<Log_Members_OpenModel>(query);
             }
 
         }
@@ -121,7 +121,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query,objects);
+                return conn.DeleteList<Log_Members_OpenModel>(query,objects);
             }
 
         }
@@ -131,7 +131,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query);
+                return conn.RecordCount<Log_Members_OpenModel>(query);
             }
         }
         public int RecordCount(string query, object[] objects)
@@ -139,7 +139,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query, objects);
+                return conn.RecordCount<Log_Members_OpenModel>(query, objects);
             }
         }
     }

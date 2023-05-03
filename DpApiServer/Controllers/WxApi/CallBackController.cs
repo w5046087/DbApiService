@@ -1,4 +1,4 @@
-﻿using DpApiServer.WeiXinLib;
+﻿using DpApiServer.Core.UseLib.WeiXinLib.OpenPlatform;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +8,8 @@ namespace DpApiServer.Controllers.wxApi
     [ApiController]
     public class CallBackController : ControllerBase
     {
-        private readonly WxDetail _wxDetail;
-        public CallBackController(WxDetail wxDetail)
+        private readonly WxOpenPlatform _wxDetail;
+        public CallBackController(WxOpenPlatform wxDetail)
         {
             _wxDetail = wxDetail;
         }

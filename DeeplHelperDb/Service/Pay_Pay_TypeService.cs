@@ -2,82 +2,82 @@ using Dapper;
 using DeeplHelperDb.Model;
 namespace DeeplHelperDb.Service {
 
-    public class A_MessageService
+    public class Pay_Pay_TypeService
     {
 
 
         private readonly DbContext dbContext;
 
 
-        public A_MessageService(DbContext _dbContext) {
+        public Pay_Pay_TypeService(DbContext _dbContext) {
 
             this.dbContext = _dbContext;
         }
 
 
-        public A_MessageModel GetByPK(string id)
+        public Pay_Pay_TypeModel GetByPK(string id)
         {
             //这里可以是ID,还可以是在模型上指定为Key [key]
             using (var conn = dbContext.GetConnection()) {
-                return conn.Get<A_MessageModel>(id);
+                return conn.Get<Pay_Pay_TypeModel>(id);
             }
 
         }
 
-        public List<A_MessageModel> GetAll()
+        public List<Pay_Pay_TypeModel> GetAll()
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>().ToList();
+                return conn.GetList<Pay_Pay_TypeModel>().ToList();
             }
         }
-        public List<A_MessageModel> GetAll(object[] _objList)
+        public List<Pay_Pay_TypeModel> GetAll(object[] _objList)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_objList).ToList();
+                return conn.GetList<Pay_Pay_TypeModel>(_objList).ToList();
             }
         }
         //"where age = 10 or Name like '%Smith%'"
-        public List<A_MessageModel> GetAll(string _whereQuery)
+        public List<Pay_Pay_TypeModel> GetAll(string _whereQuery)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_whereQuery).ToList();
+                return conn.GetList<Pay_Pay_TypeModel>(_whereQuery).ToList();
             }
         }
         //GetListPaged<User>(1,10,"where age = 10 or Name like '%Smith%'","Name desc");
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
+        public List<Pay_Pay_TypeModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
+                return conn.GetListPaged<Pay_Pay_TypeModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
             }
         }
         //connection.GetListPaged<User>(1,10,"where age = @Age","Name desc", new {Age = 10});  
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
+        public List<Pay_Pay_TypeModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
+                return conn.GetListPaged<Pay_Pay_TypeModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
             }
         }
 
-        public int? Insert(A_MessageModel model01) {
+        public int? Insert(Pay_Pay_TypeModel model01) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<A_MessageModel>(model01);
+                return conn.Insert<Pay_Pay_TypeModel>(model01);
             }
         }
 
-        public Guid Insert(A_MessageModel model,Guid guid)
+        public Guid Insert(Pay_Pay_TypeModel model,Guid guid)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<Guid,A_MessageModel>(model);
+                return conn.Insert<Guid,Pay_Pay_TypeModel>(model);
             }
         }
 
-        public int Update(A_MessageModel model)
+        public int Update(Pay_Pay_TypeModel model)
         {
 
             using (var conn = dbContext.GetConnection())
@@ -90,7 +90,7 @@ namespace DeeplHelperDb.Service {
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Delete<A_MessageModel>(id);
+                return conn.Delete<Pay_Pay_TypeModel>(id);
             }
 
         }
@@ -101,7 +101,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(objects);
+                return conn.DeleteList<Pay_Pay_TypeModel>(objects);
             }
 
         }
@@ -111,7 +111,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query);
+                return conn.DeleteList<Pay_Pay_TypeModel>(query);
             }
 
         }
@@ -121,7 +121,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query,objects);
+                return conn.DeleteList<Pay_Pay_TypeModel>(query,objects);
             }
 
         }
@@ -131,7 +131,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query);
+                return conn.RecordCount<Pay_Pay_TypeModel>(query);
             }
         }
         public int RecordCount(string query, object[] objects)
@@ -139,7 +139,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query, objects);
+                return conn.RecordCount<Pay_Pay_TypeModel>(query, objects);
             }
         }
     }

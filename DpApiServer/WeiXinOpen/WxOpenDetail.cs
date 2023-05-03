@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DpApiServer.Core.UseLib.WeiXinLib.wxModel;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DpApiServer.WeiXinOpen
 {
@@ -14,7 +15,7 @@ namespace DpApiServer.WeiXinOpen
             //https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx10cc41b9fcf3227d&secret=6c04aa66e831d4747666e5fd944825bb&code=081Rz9100uzMxO1lZ1400GDC5I2Rz91s&grant_type=authorization_code
             get { return $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={wxOpenAppId}&secret={wxSecret}&code={0}&grant_type=authorization_code"; }
         }
-        public async Task<Model.WxUserInfoM?> WxOpenLogin(string code) {
+        public async Task<WxUserInfoM?> WxOpenLogin(string code) {
 
             var response = await GetLoginAccessToken(code);
             if (response == null)
@@ -31,22 +32,22 @@ namespace DpApiServer.WeiXinOpen
 
         }
 
-        private async Task<Model.WxUserInfoM?>GetWxOpenUserInfo(string accessToken,string openid) {
+        private async Task<WxUserInfoM?>GetWxOpenUserInfo(string accessToken,string openid) {
             using (var client = new HttpClient())
             {
                 var response=await Get(string.Format(Url_GetUserInfo, accessToken, openid));
-                var result = await response.Content.ReadFromJsonAsync<Model.WxUserInfoM>();
+                var result = await response.Content.ReadFromJsonAsync<WxUserInfoM>();
                 return result;
             }
         }
-        private  async Task<Model.LoginAccessTokenM?> GetLoginAccessToken(string code) {
+        private  async Task<LoginAccessTokenM?> GetLoginAccessToken(string code) {
 
             using (var client = new HttpClient())
             {
                 string reqUrl = $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={wxOpenAppId}&secret={wxSecret}&code={code}&grant_type=authorization_code";
                 var response =await Get(reqUrl);
                 if (response == null) { return null; }
-                var result = await response.Content.ReadFromJsonAsync<Model.LoginAccessTokenM>();
+                var result = await response.Content.ReadFromJsonAsync<LoginAccessTokenM>();
                 return result;
             }
         }

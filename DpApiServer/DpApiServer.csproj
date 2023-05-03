@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Business\**" />
+    <Compile Remove="Core\Common\Jwt\**" />
+    <Content Remove="Core\Business\**" />
+    <Content Remove="Core\Common\Jwt\**" />
+    <EmbeddedResource Remove="Core\Business\**" />
+    <EmbeddedResource Remove="Core\Common\Jwt\**" />
+    <None Remove="Core\Business\**" />
+    <None Remove="Core\Common\Jwt\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.8" />
@@ -21,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Business\" />
-    <Folder Include="Core\Common\Jwt\" />
+    <Folder Include="Core\Common\" />
+    <Folder Include="WeiXinOpen\Model\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

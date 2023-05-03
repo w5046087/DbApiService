@@ -1,17 +1,17 @@
-﻿using System.Data;
 using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-namespace DpApiServer.DbHelper
+
+namespace DeeplHelperDb
 {
     public class DbContext
     {
-        private readonly string _connectionString;
-        public DbContext(string?
-             connString)
-        {
 
-            _connectionString = connString;
+        private readonly string sqlString;
+        public DbContext(string _sqlString) {
+            sqlString = _sqlString;
         }
-        public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(sqlString);
+        }
     }
 }

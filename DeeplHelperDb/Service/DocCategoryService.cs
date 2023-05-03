@@ -2,82 +2,82 @@ using Dapper;
 using DeeplHelperDb.Model;
 namespace DeeplHelperDb.Service {
 
-    public class A_MessageService
+    public class DocCategoryService
     {
 
 
         private readonly DbContext dbContext;
 
 
-        public A_MessageService(DbContext _dbContext) {
+        public DocCategoryService(DbContext _dbContext) {
 
             this.dbContext = _dbContext;
         }
 
 
-        public A_MessageModel GetByPK(string id)
+        public DocCategoryModel GetByPK(string id)
         {
             //这里可以是ID,还可以是在模型上指定为Key [key]
             using (var conn = dbContext.GetConnection()) {
-                return conn.Get<A_MessageModel>(id);
+                return conn.Get<DocCategoryModel>(id);
             }
 
         }
 
-        public List<A_MessageModel> GetAll()
+        public List<DocCategoryModel> GetAll()
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>().ToList();
+                return conn.GetList<DocCategoryModel>().ToList();
             }
         }
-        public List<A_MessageModel> GetAll(object[] _objList)
+        public List<DocCategoryModel> GetAll(object[] _objList)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_objList).ToList();
+                return conn.GetList<DocCategoryModel>(_objList).ToList();
             }
         }
         //"where age = 10 or Name like '%Smith%'"
-        public List<A_MessageModel> GetAll(string _whereQuery)
+        public List<DocCategoryModel> GetAll(string _whereQuery)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetList<A_MessageModel>(_whereQuery).ToList();
+                return conn.GetList<DocCategoryModel>(_whereQuery).ToList();
             }
         }
         //GetListPaged<User>(1,10,"where age = 10 or Name like '%Smith%'","Name desc");
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
+        public List<DocCategoryModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
+                return conn.GetListPaged<DocCategoryModel>(page, pageSizeNum, query, orderbyColumnName).ToList();
             }
         }
         //connection.GetListPaged<User>(1,10,"where age = @Age","Name desc", new {Age = 10});  
-        public List<A_MessageModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
+        public List<DocCategoryModel> GetAllPage(int page, int pageSizeNum, string query, string orderbyColumnName, object objects)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.GetListPaged<A_MessageModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
+                return conn.GetListPaged<DocCategoryModel>(page, pageSizeNum, query, orderbyColumnName, objects).ToList();
             }
         }
 
-        public int? Insert(A_MessageModel model01) {
+        public int? Insert(DocCategoryModel model01) {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<A_MessageModel>(model01);
+                return conn.Insert<DocCategoryModel>(model01);
             }
         }
 
-        public Guid Insert(A_MessageModel model,Guid guid)
+        public Guid Insert(DocCategoryModel model,Guid guid)
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Insert<Guid,A_MessageModel>(model);
+                return conn.Insert<Guid,DocCategoryModel>(model);
             }
         }
 
-        public int Update(A_MessageModel model)
+        public int Update(DocCategoryModel model)
         {
 
             using (var conn = dbContext.GetConnection())
@@ -90,7 +90,7 @@ namespace DeeplHelperDb.Service {
         {
             using (var conn = dbContext.GetConnection())
             {
-                return conn.Delete<A_MessageModel>(id);
+                return conn.Delete<DocCategoryModel>(id);
             }
 
         }
@@ -101,7 +101,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(objects);
+                return conn.DeleteList<DocCategoryModel>(objects);
             }
 
         }
@@ -111,7 +111,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query);
+                return conn.DeleteList<DocCategoryModel>(query);
             }
 
         }
@@ -121,7 +121,7 @@ namespace DeeplHelperDb.Service {
             //删除多行数据
             using (var conn = dbContext.GetConnection())
             {
-                return conn.DeleteList<A_MessageModel>(query,objects);
+                return conn.DeleteList<DocCategoryModel>(query,objects);
             }
 
         }
@@ -131,7 +131,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query);
+                return conn.RecordCount<DocCategoryModel>(query);
             }
         }
         public int RecordCount(string query, object[] objects)
@@ -139,7 +139,7 @@ namespace DeeplHelperDb.Service {
 
             using (var conn = dbContext.GetConnection())
             {
-                return conn.RecordCount<A_MessageModel>(query, objects);
+                return conn.RecordCount<DocCategoryModel>(query, objects);
             }
         }
     }
